@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm';
 // This function gets called at build time
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
-  const res = await fetch('http://localhost:1337/articles');
+  const res = await fetch('https://surfskater-strapi.herokuapp.com/articles');
   const posts = await res.json();
 
   // Get the paths we want to pre-render based on posts
@@ -23,7 +23,9 @@ export async function getStaticProps({ params }) {
   // You can use any data fetching library
   //const id = params.id;
 
-  const res = await fetch(`http://localhost:1337/articles/${params.id}`);
+  const res = await fetch(
+    `https://surfskater-strapi.herokuapp.com/articles/${params.id}`
+  );
   const post = await res.json();
 
   return {
@@ -49,12 +51,14 @@ const Post = ({ post }) => {
           <p>{post.shortDescription}</p>
         </div>
         <div className='dynamicContent'>
-          <img src={post.featuredImage.formats.large.url} className='mb-6' />
-          <ReactMarkdown
-            className='markdown'
-            escapeHtml={false}
-            remarkPlugins={[remarkGfm]}
-          >
+          <img
+            src={
+              'https://surfskater-strapi.herokuapp.com' +
+              post.featuredImage.formats.large.url
+            }
+            className='mb-6'
+          />
+          <ReactMarkdown className='markdown' remarkPlugins={[remarkGfm]}>
             {post.content}
           </ReactMarkdown>
         </div>

@@ -7,7 +7,10 @@ export default function GridItem({ post }) {
           <div className=' bg-white  mx-auto shadow-lg rounded-lg hover:shadow-xl transition duration-200'>
             <img
               className='rounded-t-lg'
-              src={post.featuredImage.formats.medium.url}
+              src={
+                'https://surfskater-strapi.herokuapp.com' +
+                post.featuredImage.formats.medium.url
+              }
               alt=''
             />
             <div className='py-4 px-8'>
