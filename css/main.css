@@ -1,0 +1,70 @@
+.dynamicContent h1,
+.dynamicContent h2,
+.dynamicContent h3,
+.dynamicContent h4,
+.dynamicContent h5,
+.dynamicContent h6 {
+  font-weight: bold;
+  color: #555555;
+}
+
+.dynamicContent h1 {
+  margin-top: 2rem;
+  font-size: 2.5rem;
+}
+
+.dynamicContent h2 {
+  margin-top: 1.5rem;
+  font-size: 2rem;
+}
+
+.dynamicContent h3 {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.dynamicContent ol {
+  list-style-type: disc;
+  margin: 1rem 0;
+  padding: 0 2rem;
+}
+
+.dynamicContent ul {
+  list-style-type: decimal;
+  margin: 1rem 0;
+  padding: 0 2rem;
+}
+
+.dynamicContent ul li li {
+  list-style-type: lower-alpha;
+}
+
+.dynamicContent a {
+  color: #009999;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.dynamicContent blockquote {
+  background-color: #efefef;
+  padding: 1rem 0.7rem;
+  border-left: #00c4cb solid 4px;
+  margin: 1rem 0;
+}
+
+.dynamicContent hr {
+  border-top: #ccc solid 1px;
+  margin: 3rem 0;
+}
+
+.dynamicContent pre {
+  padding: 1rem;
+  background-color: #222;
+  color: white;
+  margin: 0.5rem 0;
+}
+
+.dynamicContent th,
+.dynamicContent td {
+  padding: 0.4rem;
+}
