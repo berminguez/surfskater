@@ -52,7 +52,8 @@ const Post = ({ post }) => {
           <p>{post.shortDescription}</p>
         </div>
         <div className='dynamicContent'>
-          <img src={post.image.url} className='mb-6' />
+          {post.image ? <img src={post.image.url} className='mb-6' /> : <img />}
+
           <ReactMarkdown className='markdown' remarkPlugins={[remarkGfm]}>
             {post.content}
           </ReactMarkdown>

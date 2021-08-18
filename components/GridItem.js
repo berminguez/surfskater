@@ -5,7 +5,11 @@ export default function GridItem({ post }) {
       <a>
         <div className=' py-20'>
           <div className=' bg-white  mx-auto shadow-lg rounded-lg hover:shadow-xl transition duration-200'>
-            <img className='rounded-t-lg' src={post.image.url} alt='' />
+            {post.image ? (
+              <img className='rounded-t-lg' src={post.image.url} alt='' />
+            ) : (
+              <img />
+            )}
             <div className='py-4 px-8'>
               <h1 className='hover:cursor-pointer mt-2 text-gray-900 font-bold text-2xl tracking-tight'>
                 {post.title}
