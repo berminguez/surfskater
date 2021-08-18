@@ -5,7 +5,7 @@ export default function BlogGrid({ posts }) {
   return (
     <ul className='grid grid-cols-4 gap-8'>
       {posts.map((post) => (
-        <GridItem key={post.id.toString()} post={post} />
+        <GridItem key={post.slug} post={post} />
       ))}
     </ul>
   );

@@ -2,34 +2,19 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import BlogGrid from '../components/BlogGrid';
 import Link from 'next/link';
+import Strapi from '../components/apis/Strapi';
 
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
 
-  const res = await fetch('https://surfskater-strapi.herokuapp.com/articles');
+  //const posts = await Strapi.get('/articles');
+
+  const res = await fetch('https://surfskater-admin.herokuapp.com/articles');
   const posts = await res.json();
 
-  //   const result = await Strapi.get('/articles')
-  //     .then((posts) => {
-  //       console.log(posts);
-  //       return {
-  //         props: {
-  //           posts,
-  //         },
-  //       };
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     })
-  //     .then(function () {
-  //       // always executed
-  //     });
-
   return {
-    props: {
-      posts,
-    },
+    props: { posts }, // will be passed to the page component as props
   };
 }
 
