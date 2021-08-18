@@ -42,7 +42,7 @@ export default function Home({ posts }) {
             guías de compra de surfskate...
           </p>
           <div className='my-3 inline-flex'>
-            <Link href='/posts/1'>
+            <Link href='/posts/que-es-el-surfskate'>
               <a className='relative px-12 py-4 bg-tertiary text-white text-center rounded-full'>
                 ¿Qué es el surfskate?
               </a>
