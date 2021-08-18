@@ -1,17 +1,24 @@
 import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import Strapi from '../../components/apis/Strapi';
 
 // This function gets called at build time
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
-  const res = await fetch('https://surfskater-strapi.herokuapp.com/articles');
-  const posts = await res.json();
+  Strapi.get('/articles').then((posts) => {
+    const paths = posts.map((post) => ({
+      params: { id: post.id.toString() },
+    }));
+  });
 
-  // Get the paths we want to pre-render based on posts
-  const paths = posts.map((post) => ({
-    params: { id: post.id.toString() },
-  }));
+  // const res = await fetch('https://surfskater-strapi.herokuapp.com/articles');
+  // const posts = await res.json();
+
+  // // Get the paths we want to pre-render based on posts
+  // const paths = posts.map((post) => ({
+  //   params: { id: post.id.toString() },
+  // }));
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
@@ -21,18 +28,25 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  //const id = params.id;
 
-  const res = await fetch(
-    `https://surfskater-strapi.herokuapp.com/articles/${params.id}`
-  );
-  const post = await res.json();
+  Strapi.get(`/articles/${params.id}`).then((post) => {
+    return {
+      props: {
+        post: post,
+      },
+    };
+  });
 
-  return {
-    props: {
-      post: post,
-    },
-  };
+  // const res = await fetch(
+  //   `https://surfskater-strapi.herokuapp.com/articles/${params.id}`
+  // );
+  // const post = await res.json();
+
+  // return {
+  //   props: {
+  //     post: post,
+  //   },
+  // };
 }
 
 const Post = ({ post }) => {
@@ -48,13 +62,13 @@ const Post = ({ post }) => {
       </div>
       <div className='container px-4 max-w-5xl mx-auto pb-12'>
         <div className='text-center py-12'>
-          <p>{post.shortDescription}</p>
+          <p>{post.description}</p>
         </div>
         <div className='dynamicContent'>
           <img
             src={
               'https://surfskater-strapi.herokuapp.com' +
-              post.featuredImage.formats.large.url
+              post.picture.formats.large.url
             }
             className='mb-6'
           />
