@@ -33,7 +33,7 @@ export default function Home({ posts }) {
         }}
       >
         <div className='herocontent py-24 md:py-32 lg:py-64 xl:py-64 mx-auto max-w-4xl text-center'>
-          <h1 className='font-bold text-white text-2xl text-center uppercase'>
+          <h1 className='font-bold text-white text-2xl md:text-4xl text-center uppercase'>
             Surfea la ciudad
           </h1>
           <p className='font-regular text-white text-center'>
