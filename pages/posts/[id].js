@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm';
 // This function gets called at build time
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
-  const res = await fetch(process.env.STRAPI_HOST + '/articles');
+  const res = await fetch(process.env.NEXT_PUBLIC_STRAPI_HOST + '/articles');
   const posts = await res.json();
 
   // Get the paths we want to pre-render based on posts
@@ -23,7 +23,9 @@ export async function getStaticProps({ params }) {
   // You can use any data fetching library
   //const id = params.id;
 
-  const res = await fetch(`${process.env.STRAPI_HOST}/articles/${params.id}`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_HOST}/articles/${params.id}`
+  );
   const post = await res.json();
 
   return {
@@ -50,10 +52,7 @@ const Post = ({ post }) => {
           <p>{post.shortDescription}</p>
         </div>
         <div className='dynamicContent'>
-          <img
-            src={process.env.STRAPI_HOST + post.image.url}
-            className='mb-6'
-          />
+          <img src={post.image.url} className='mb-6' />
           <ReactMarkdown className='markdown' remarkPlugins={[remarkGfm]}>
             {post.content}
           </ReactMarkdown>
