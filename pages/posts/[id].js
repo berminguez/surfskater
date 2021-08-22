@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 // This function gets called at build time
 export async function getStaticPaths() {
@@ -56,8 +57,7 @@ const Post = ({ post }) => {
 
           <ReactMarkdown
             className='markdown'
-            escapeHtml={false}
-            remarkPlugins={[remarkGfm]}
+            remarkPlugins={[remarkGfm, rehypeRaw]}
           >
             {post.content}
           </ReactMarkdown>
