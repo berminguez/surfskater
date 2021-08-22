@@ -57,7 +57,8 @@ const Post = ({ post }) => {
 
           <ReactMarkdown
             className='markdown'
-            remarkPlugins={[remarkGfm, rehypeRaw]}
+            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
           >
             {post.content}
           </ReactMarkdown>
