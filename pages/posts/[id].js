@@ -49,11 +49,20 @@ const Post = ({ post }) => {
         </h1>
       </div>
       <div className='container px-4 max-w-5xl mx-auto pb-12'>
-        <div className='text-center py-12'>
-          <p>{post.shortDescription}</p>
+        <div className='text-center py-12 text-lg font-normal italic'>
+          <p>{post.description}</p>
         </div>
-        <div className='dynamicContent'>
-          {post.image ? <img src={post.image.url} className='mb-6' /> : <img />}
+        <div className='dynamicContent font-sans text-lg text-gray-800'>
+          {post.image ? (
+            <div className='w-full'>
+              <img
+                src={post.image.url}
+                className='mb-6 object-cover w-full h-72 md:h-96'
+              />
+            </div>
+          ) : (
+            <img />
+          )}
 
           <ReactMarkdown
             className='markdown'

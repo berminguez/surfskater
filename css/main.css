@@ -5,7 +5,7 @@
 .dynamicContent h5,
 .dynamicContent h6 {
   font-weight: bold;
-  color: #555555;
+  color: #444444;
 }
 
 .dynamicContent h1 {
@@ -14,8 +14,10 @@
 }
 
 .dynamicContent h2 {
-  margin-top: 1.5rem;
-  font-size: 2rem;
+  margin-top: 3rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 3rem;
 }
 
 .dynamicContent h3 {
@@ -55,6 +57,11 @@
 .dynamicContent hr {
   border-top: #ccc solid 1px;
   margin: 3rem 0;
+}
+
+.dynamicContent iframe {
+  margin: 2rem auto;
+  max-width: 100%;
 }
 
 .dynamicContent pre {
