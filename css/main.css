@@ -25,6 +25,10 @@
   font-size: 1.5rem;
 }
 
+.dynamicContent p {
+  margin-bottom: 1rem;
+}
+
 .dynamicContent ol {
   list-style-type: disc;
   margin: 1rem 0;

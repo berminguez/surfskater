@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import Image from 'next/image';
 
 // This function gets called at build time
 export async function getStaticPaths() {
@@ -54,10 +55,14 @@ const Post = ({ post }) => {
         </div>
         <div className='dynamicContent font-sans text-lg text-gray-800'>
           {post.image ? (
-            <div className='w-full'>
-              <img
+            <div className='w-full mb-6 h-72 md:h-96 overflow-hidden'>
+              <Image
+                className=''
                 src={post.image.url}
-                className='mb-6 object-cover w-full h-72 md:h-96'
+                alt={post.image.alternativeText}
+                width={post.image.width}
+                height={post.image.height}
+                layout='responsive'
               />
             </div>
           ) : (

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 export default function GridItem({ post }) {
   return (
     <Link href={`/posts/${post.slug}`}>
@@ -7,11 +8,20 @@ export default function GridItem({ post }) {
           <div className=' bg-white  mx-auto shadow-lg rounded-lg hover:shadow-xl transition duration-200'>
             {post.image ? (
               <div className='h-40'>
-                <img
-                  className='rounded-t-lg object-cover h-40 w-full'
-                  src={post.image.url}
-                  alt=''
-                />
+                {post.image.url ? (
+                  <div className='rounded-t-lg h-40 w-full overflow-hidden'>
+                    <Image
+                      className=''
+                      src={post.image.formats.small.url}
+                      alt={post.image.alternativeText}
+                      width={post.image.formats.small.width}
+                      height={post.image.formats.small.height}
+                      layout='responsive'
+                    />
+                  </div>
+                ) : (
+                  <img />
+                )}
               </div>
             ) : (
               <img />
